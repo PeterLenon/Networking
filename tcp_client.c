@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/socket.c>
-#include <netinet/in.c>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
 
 int main(void){
 	int network_socket;
-	network_socket = socket(AF_INET, SOCK_STREAM, 0)
+	network_socket = socket(AF_INET, SOCK_STREAM, 0);
 
 	struct sockaddr_in server_address;
 	server_address.sin_family = AF_INET;
@@ -19,9 +19,9 @@ int main(void){
 	}
 
 	char server_response[256];
-	recv(netwrok_socket, &server_response, sizeof(server_response), 0);
+	recv(network_socket, &server_response, sizeof(server_response), 0);
 
-	printf("The server responded with %s\n\n", server_response)
+	printf("The server responded with %s\n\n", server_response);
 	
 	return 0;
 }
